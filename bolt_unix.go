@@ -3,7 +3,7 @@
 package bbolt
 
 import (
-	"fmt"
+	//"fmt"
 	"syscall"
 	"time"
 	"unsafe"
@@ -59,12 +59,31 @@ func mmap(db *DB, sz int) error {
 		return err
 	}
 
+	// per https://github.com/etcd-io/bbolt/pull/940
+	// and
+	// https://github.com/etcd-io/bbolt/issues/939
+	// MADV_RANDOM is best omitted:
+	//
+	// "In addition to the explicit documented behavior in posix_madvise(2) this
+	// call since Linux 6.4 also causes the kernel to aggressively free pages
+	// from the page cache by short circuiting the LRU second chance mechanism.
+	// The result is compaction events that took 900ms now take up to 20s and
+	// a system which generally operated with near zero major page faults sees
+	// 600 or more major faults per second during compaction events.
+	//
+	// "We've tested this change in older kernels and observed no negative impact
+	// in typical cloud instances."
+	//
+	// Fixes #939
+	//
+	// -- https://github.com/sdodson
+	//
 	// Advise the kernel that the mmap is accessed randomly.
-	err = unix.Madvise(b, syscall.MADV_RANDOM)
-	if err != nil && err != syscall.ENOSYS {
-		// Ignore not implemented error in kernel because it still works.
-		return fmt.Errorf("madvise: %s", err)
-	}
+	// err = unix.Madvise(b, syscall.MADV_RANDOM)
+	// if err != nil && err != syscall.ENOSYS {
+	// 	// Ignore not implemented error in kernel because it still works.
+	// 	return fmt.Errorf("madvise: %s", err)
+	// }
 
 	// Save the original byte slice and convert to a byte array pointer.
 	db.dataref = b
