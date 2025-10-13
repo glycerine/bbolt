@@ -21,10 +21,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	bolt "go.etcd.io/bbolt"
-	berrors "go.etcd.io/bbolt/errors"
-	"go.etcd.io/bbolt/internal/btesting"
-	"go.etcd.io/bbolt/internal/common"
+	bolt "github.com/glycerine/bbolt"
+	berrors "github.com/glycerine/bbolt/errors"
+	"github.com/glycerine/bbolt/internal/btesting"
+	"github.com/glycerine/bbolt/internal/common"
 )
 
 // pageSize is the size of one page in the data file.
@@ -1469,7 +1469,7 @@ func TestDBUnmap(t *testing.T) {
 	require.NoError(t, db.DB.Close())
 
 	// Ignore the following error:
-	// Error: copylocks: call of reflect.ValueOf copies lock value: go.etcd.io/bbolt.DB contains sync.Once contains sync.Mutex (govet)
+	// Error: copylocks: call of reflect.ValueOf copies lock value: github.com/glycerine/bbolt.DB contains sync.Once contains sync.Mutex (govet)
 	//nolint:govet
 	v := reflect.ValueOf(*db.DB)
 	dataref := v.FieldByName("dataref")

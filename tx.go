@@ -12,8 +12,8 @@ import (
 	"time"
 	"unsafe"
 
-	berrors "go.etcd.io/bbolt/errors"
-	"go.etcd.io/bbolt/internal/common"
+	berrors "github.com/glycerine/bbolt/errors"
+	"github.com/glycerine/bbolt/internal/common"
 )
 
 // Tx represents a read-only or read/write transaction on the database.

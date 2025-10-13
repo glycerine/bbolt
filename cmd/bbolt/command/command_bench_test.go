@@ -9,7 +9,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"go.etcd.io/bbolt/cmd/bbolt/command"
+	"github.com/glycerine/bbolt/cmd/bbolt/command"
 )
 
 type safeWriter struct {

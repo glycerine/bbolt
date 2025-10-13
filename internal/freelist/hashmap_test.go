@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"go.etcd.io/bbolt/internal/common"
+	"github.com/glycerine/bbolt/internal/common"
 )
 
 func TestFreelistHashmap_init_panics(t *testing.T) {

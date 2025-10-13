@@ -6,7 +6,7 @@ import (
 	"sort"
 	"unsafe"
 
-	"go.etcd.io/bbolt/internal/common"
+	"github.com/glycerine/bbolt/internal/common"
 )
 
 type txPending struct {

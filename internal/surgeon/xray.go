@@ -9,8 +9,8 @@ import (
 	"bytes"
 	"fmt"
 
-	"go.etcd.io/bbolt/internal/common"
-	"go.etcd.io/bbolt/internal/guts_cli"
+	"github.com/glycerine/bbolt/internal/common"
+	"github.com/glycerine/bbolt/internal/guts_cli"
 )
 
 type XRay struct {
