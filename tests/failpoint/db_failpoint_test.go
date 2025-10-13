@@ -9,12 +9,12 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	bolt "go.etcd.io/bbolt"
-	"go.etcd.io/bbolt/errors"
-	"go.etcd.io/bbolt/internal/btesting"
-	"go.etcd.io/bbolt/internal/common"
-	"go.etcd.io/bbolt/internal/guts_cli"
-	gofail "go.etcd.io/gofail/runtime"
+	bolt "github.com/glycerine/bbolt"
+	"github.com/glycerine/bbolt/errors"
+	"github.com/glycerine/bbolt/internal/btesting"
+	"github.com/glycerine/bbolt/internal/common"
+	"github.com/glycerine/bbolt/internal/guts_cli"
+	gofail "github.com/glycerine/gofail/runtime"
 )
 
 func TestFailpoint_MapFail(t *testing.T) {
